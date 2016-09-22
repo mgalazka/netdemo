@@ -155,9 +155,9 @@ def spark():
         if (host and (host.group(1) == 'exchange')):
             bot.replyToRoom(sparkroom, "exchange 212.1.10.20")
             return ('', 204)
-	else:
-	    bot.replyToRoom(sparkroom, "Command not valid.")
-	    return ('', 204)
+        else:
+            bot.replyToRoom(sparkroom, "Command not valid.")
+            return ('', 204)
     else:
         return("Hello World")
 
