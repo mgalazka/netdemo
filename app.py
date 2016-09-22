@@ -52,7 +52,7 @@ class SparkBot(object):
      
     def deleteApicTicket(self, ticketId):
         url = self.apicEmUrl + '/api/v1/ticket/' + ticketId
-        myheaders = {
+        myHeaders = {
             'content-type': 'application/json',
             'X-Auth-Token': ticketId
         }
