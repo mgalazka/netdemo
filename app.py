@@ -16,7 +16,7 @@ class SparkBot(object):
     def __init__(self):
         pass
 
-    def getSparkTxt(msgId):
+    def getSparkTxt(self, msgId):
         myHeaders = {
             'content-type': 'application/json',
             'Authorization': self.botKey
@@ -25,7 +25,7 @@ class SparkBot(object):
         response = requests.get(url, headers = myHeaders).json()
         return response['text']
 
-    def replyToRoom(roomId,msg):
+    def replyToRoom(self, roomId, msg):
         myHeaders = {
             'content-type': 'application/json',
             'Authorization': self.botKey
@@ -38,7 +38,7 @@ class SparkBot(object):
         response = requests.post(url, headers = myHeaders, data = json.dumps(payload)).json()
         return True
         
-    def getApicTicket():
+    def getApicTicket(self):
         url = self.apicEmUrl + '/api/v1/ticket'
         myHeaders = {
             'content-type': 'application/json'
@@ -50,7 +50,7 @@ class SparkBot(object):
         response = requests.post(url, verify = False, headers = myHeaders, data = json.dumps(payload)).json()
         return response['response']['serviceTicket']
      
-    def deleteApicTicket(ticketId):
+    def deleteApicTicket(self, ticketId):
         url = self.apicEmUrl + '/api/v1/ticket/' + ticketId
         myheaders = {
             'content-type': 'application/json',
@@ -59,7 +59,7 @@ class SparkBot(object):
         response = requests.delete(url, verify = False, headers = myHeaders)
         return True
      
-    def createPathTrace(ticketId, protocol, sourceIP, sourcePort, destIP, destPort):
+    def createPathTrace(self, ticketId, protocol, sourceIP, sourcePort, destIP, destPort):
         url = self.apicEmUrl + '/api/v1/flow-analysis/'
         myHeaders = {
             'content-type': 'application/json',
@@ -76,7 +76,7 @@ class SparkBot(object):
         response = requests.post(url, verify = False, headers = myHeaders, data = json.dumps(payload)).json()
         return response['response']['flowAnalysisId']
     
-    def getPathTrace(ticketId, flowId):
+    def getPathTrace(self, ticketId, flowId):
         url = self.apicEmUrl + '/api/v1/flow-analysis/' + flowId
         myHeaders = {
             'content-type': 'application/json',
@@ -92,7 +92,7 @@ class SparkBot(object):
             'path': path
         }
 
-    def getBotId():
+    def getBotId(self):
         return self.botId
 
 
@@ -155,6 +155,9 @@ def spark():
         if (host and (host.group(1) == 'exchange')):
             bot.replyToRoom(sparkroom, "exchange 212.1.10.20")
             return ('', 204)
+	else:
+	    bot.replyToRoom(sparkroom, "Command not valid.")
+	    return ('', 204)
 
 
 if __name__ == "__main__":
