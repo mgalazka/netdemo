@@ -158,6 +158,8 @@ def spark():
 	else:
 	    bot.replyToRoom(sparkroom, "Command not valid.")
 	    return ('', 204)
+    else:
+        return("Hello World")
 
 
 if __name__ == "__main__":
