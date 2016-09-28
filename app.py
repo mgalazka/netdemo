@@ -147,19 +147,8 @@ def spark():
             bot.replyToRoom(sparkroom, "Path trace complete. " + pathmsg)
             return ('', 204)
         
-        ## Provide static-defined host lookups via Sparkbot
-        host = re.search("!host (merrill-laptop|exchange)", sparkmsg)
-        if (host and (host.group(1) == 'merrill-laptop')):
-            bot.replyToRoom(sparkroom, "merrill-laptop 65.1.1.46")
-            return ('', 204)
-        if (host and (host.group(1) == 'exchange')):
-            bot.replyToRoom(sparkroom, "exchange 212.1.10.20")
-            return ('', 204)
-        else:
-            bot.replyToRoom(sparkroom, "Command not valid.")
-            return ('', 204)
     else:
-        return("Hello World")
+        return('', 204)
 
 
 if __name__ == "__main__":
