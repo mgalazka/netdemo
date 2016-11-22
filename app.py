@@ -143,7 +143,7 @@ def spark():
                 px += 1 
                 pathmsg += devlist['ip'] + ' (' + devlist['type'] + ')'
                 if(px != pathcount):
-                    pathmsg += " <--> "
+                    pathmsg += " --> "
             bot.replyToRoom(sparkroom, "Path trace complete. " + pathmsg)
             return ('', 204)
         
