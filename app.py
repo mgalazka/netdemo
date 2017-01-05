@@ -146,6 +146,10 @@ def spark():
                     pathmsg += " --> "
             bot.replyToRoom(sparkroom, "Path trace complete. " + pathmsg)
             return ('', 204)
+
+        ## Final closeout if nothing matched
+        bot.replyToRoom(sparkroom, "Command not valid.")
+        return('', 204)
         
     else:
         return('', 204)
